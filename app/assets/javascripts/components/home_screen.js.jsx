@@ -1,11 +1,15 @@
 var HomeScreen = React.createClass({
-  {/* This is called a lifecycle function */}
+  
   getInitialState: function() {
-    return { count: 0 };
+    return { countOne: 0, countTwo: 0,};
   },
 
-  incrementClickCount: function() {
-    this.setState({count: this.state.count + 1});
+  incrementClickCountOne: function() {
+    this.setState({countOne: this.state.countOne + 1});
+  },
+
+  incrementClickCountTwo: function() {
+    this.setState({countTwo: this.state.countTwo + 1});
   },
 
   render: function() {
@@ -16,10 +20,13 @@ var HomeScreen = React.createClass({
         <p className="content">
           This is some text from react
         </p>
-        <p onClick={this.incrementClickCount}>
-          Click count: {this.state.count}
+        <p onClick={this.incrementClickCountOne}>
+          Click count one: {this.state.countOne}
+        </p>
+        <p onClick={this.incrementClickCountTwo}>
+          Click count two: {this.state.countTwo}
         </p>
       </div>
     )
-  },
+  }
 });
