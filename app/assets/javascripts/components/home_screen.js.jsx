@@ -1,3 +1,11 @@
+var Greeting = React.createClass({
+  render: function() {
+    return (
+      <h1 className="title">Hello!</h1>  
+    )
+  },
+});
+
 var HomeScreen = React.createClass({
   
   getInitialState: function() {
@@ -16,7 +24,7 @@ var HomeScreen = React.createClass({
     var name = 'Noel';
     return (
       <div>
-        <h1 className="title">Hello!</h1>
+        <Greeting />
         <p className="content">
           This is some text from react
         </p>
@@ -28,5 +36,5 @@ var HomeScreen = React.createClass({
         </p>
       </div>
     )
-  }
+  },
 });
