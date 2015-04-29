@@ -28,19 +28,19 @@ var Greeting = React.createClass({
   },
 });
 
-var ClickCountOne = React.createClass({
+var ClickCount = React.createClass({
   getInitialState: function() {
-    return { countOne: 0 };
+    return { count: 0 };
   },
 
-  incrementClickCountOne: function() {
-    this.setState({countOne: this.state.countOne + 1});
+  incrementClickCount: function() {
+    this.setState({count: this.state.count + 1});
   },
 
   render: function() {
     return (
-      <p onClick={this.incrementClickCountOne}>
-          Click count one: {this.state.countOne}
+      <p onClick={this.incrementClickCount}>
+          Click count: {this.state.count}
       </p>
     );
   },
@@ -51,14 +51,6 @@ var HomeScreen = React.createClass({
     return { countTwo: 0 };
   },
 
-  incrementClickCountOne: function() {
-    this.setState({countOne: this.state.countOne + 1});
-  },
-
-  incrementClickCountTwo: function() {
-    this.setState({countTwo: this.state.countTwo + 1});
-  },
-
   render: function() {
     return (
       <div>
@@ -66,10 +58,8 @@ var HomeScreen = React.createClass({
         <p className="content">
           This is some text coming from a React component!
         </p>
-        <ClickCountOne />
-        <p onClick={this.incrementClickCountTwo}>
-          Click count two: {this.state.countTwo}
-        </p>
+        <ClickCount />
+        <ClickCount />
       </div>
     );
   },
