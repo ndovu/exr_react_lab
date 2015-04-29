@@ -30,7 +30,7 @@ var Greeting = React.createClass({
 
 var ClickCount = React.createClass({
   getInitialState: function() {
-    return { count: 0 };
+    return { count: this.props.initialValue || 0 };
   },
 
   incrementClickCount: function() {
@@ -40,7 +40,7 @@ var ClickCount = React.createClass({
   render: function() {
     return (
       <p onClick={this.incrementClickCount}>
-          Click count: {this.state.count}
+          {this.props.title}: {this.state.count}
       </p>
     );
   },
@@ -58,7 +58,8 @@ var HomeScreen = React.createClass({
         <p className="content">
           This is some text coming from a React component!
         </p>
-        <ClickCount />
+        <ClickCount initialValue={1} title="click counter one"/>
+        <ClickCount initialValue={2} title="click counter two"/>
         <ClickCount />
       </div>
     );
