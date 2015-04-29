@@ -1,4 +1,15 @@
+function reverse(s) {
+  var o = '';
+  for (var i = s.length - 1; i >= 0; i--)
+    o += s[i];
+  return o;
+}
+
 var Greeting = React.createClass({
+  getDefaultProps: function() {
+    return { name: 'stranger' };
+  },
+
   getInitialState: function() {
     return { language: 'english' }
   },
@@ -14,23 +25,34 @@ var Greeting = React.createClass({
   render: function() {
     if (this.state.language == 'english') {
       return (
-        <h1 className="title">
-          Hello! <a onClick={this.useSpanish}>(es)</a>
-        </h1>
+        <div className="greeting">
+          <h1 className="title">
+            Hello {reverse(this.props.name)}! <a onClick={this.useSpanish}>(es)</a>
+          </h1>
+          {this.props.children}
+        </div>
       )
     } else {
       return (
-        <h1 className="title">
-          Hola! <a onClick={this.useEnglish}>(en)</a>
-        </h1>
+        <div className="greeting">
+          <h1 className="title">
+            Hola {reverse(this.props.name)}ito! <a onClick={this.useEnglish}>(en)</a>
+          </h1>
+          {this.props.name}
+        </div>
       )
     }
   },
+
 });
 
-var ClickCount = React.createClass({
+var ClickCounter = React.createClass({
+  getDefaultProps: function() {
+    return { initialValue: 0, title: 'Click counter' }
+  },
+
   getInitialState: function() {
-    return { count: this.props.initialValue || 0 };
+    return { count: this.props.initialValue };
   },
 
   incrementClickCount: function() {
@@ -40,7 +62,7 @@ var ClickCount = React.createClass({
   render: function() {
     return (
       <p onClick={this.incrementClickCount}>
-          {this.props.title}: {this.state.count}
+        {this.props.title}: {this.state.count}
       </p>
     );
   },
@@ -48,20 +70,27 @@ var ClickCount = React.createClass({
 
 var HomeScreen = React.createClass({
   getInitialState: function() {
-    return { countTwo: 0 };
+    return { };
   },
 
   render: function() {
     return (
       <div>
-        <Greeting />
+        <Greeting name="Brent">
+          <p>This is from inside of the greeting!</p>
+          <p>More stuff!</p>
+          <p>More stuff!</p>
+        </Greeting>
+
         <p className="content">
           This is some text coming from a React component!
         </p>
-        <ClickCount initialValue={1} title="click counter one"/>
-        <ClickCount initialValue={2} title="click counter two"/>
-        <ClickCount />
+
+        <ClickCounter initialValue={1} title="Click counter one" />
+        <ClickCounter initialValue={2} title="Click counter two" />
+        <ClickCounter />
       </div>
     );
-  },
+  }
+
 });

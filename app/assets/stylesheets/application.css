@@ -21,3 +21,9 @@
 .content {
   color: green;
 }
+
+.greeting p {
+  background: #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
