@@ -1,37 +1,45 @@
 var HomeScreen = React.createClass({
   getInitialState: function() {
     return {
-      nameSubmitted: false,
-      name: ''
+      boxStyle: {width: 200, height: 200, backgroundColor: 'red'}
     }
   },
 
-  submitName: function(e) {
-    e.preventDefault();
-    this.setState({nameSubmitted: true});
+  increaseWidth: function() {
+    var style = this.state.boxStyle;
+    style.width = style.width + 10;
+    this.setState({boxStyle: style});
   },
 
-  updateName: function() {
-    this.setState({name: this.refs.nameInput.getDOMNode().value});
+  increaseHeight: function() {
+    var style = this.state.boxStyle;
+    style.height = style.height + 10;
+    this.setState({boxStyle: style});
+  },
+
+  setRed: function() {
+    var style = this.state.boxStyle;
+    style.backgroundColor = 'red';
+    this.setState({boxStyle: style});
+  },
+
+  setGreen: function() {
+    var style = this.state.boxStyle;
+    style.backgroundColor = 'green';
+    this.setState({boxStyle: style});
   },
 
   render: function() {
-    if (this.state.nameSubmitted) {
-      return (
-        <div>
-          <h1>Hello {this.state.name}!</h1>
-          <button onClick={this.reset}>OK!</button>
+    return (
+      <div>
+        <div style={this.state.boxStyle} />
+        <div style={{position: 'absolute', top: 0, left: 0}}>
+          <button onClick={this.increaseWidth}>Increase width</button>
+          <button onClick={this.increaseHeight}>Increase height</button>
+          <button onClick={this.setRed}>Red</button>
+          <button onClick={this.setGreen}>Green</button>
         </div>
-      )
-    } else {
-      return (
-        <form onSubmit={this.submitName}>
-          <input type="text" ref="nameInput"
-                 placeholder="What is your name?"
-                 onChange={this.updateName} />
-          <input type="submit" />
-        </form>
-      )
-    }
+      </div>
+    )
   },
 });
