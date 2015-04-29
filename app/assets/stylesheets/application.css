@@ -14,16 +14,17 @@
  *= require_self
  */
 
-.title {
-  color: red;
-}
-
-.content {
+.active-word {
   color: green;
+  text-decoration: underline;
 }
 
-.greeting p {
-  background: #ccc;
-  border-radius: 5px;
+.word-input {
+  width: 200px;
   padding: 10px;
+  font-size: 14px;
+}
+
+.incorrect {
+  color: red;
 }
