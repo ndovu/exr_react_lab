@@ -71,7 +71,7 @@ var ClickCounter = React.createClass({
 
 var HomeScreen = React.createClass({
   getInitialState: function() {
-    return { };
+    return { sum: 0, items: [] };
   },
 
   increaseSum: function () {
@@ -80,6 +80,15 @@ var HomeScreen = React.createClass({
 
   updateText: function() {
     this.setState({text: this.refs.textInput.getDOMNode().value});
+  },
+
+  addItem: function(e) {
+    // Prevent default form action
+    e.preventDefault();
+    // Set the state to append the text to some array
+    var items = this.state.items;
+    items.push(this.state.text);
+    this.setState({items: items, text: ''});
   },
 
   render: function() {
@@ -91,7 +100,13 @@ var HomeScreen = React.createClass({
           <p>More stuff!</p>
         </Greeting>
 
-        <input type="text" ref="textInput" onChange={this.updateText} />
+        <form onSubmit={this.addItem}>
+          <input  type="text" 
+                  ref="textInput" 
+                  value={this.state.text}
+                  onChange={this.updateText} />
+          <button>Submit</button>
+        </form>
         {this.state.text}
 
         <p className="content">
