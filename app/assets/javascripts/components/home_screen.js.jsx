@@ -1,4 +1,5 @@
 var HomeScreen = React.createClass({
+  {/* This is called a lifecycle function */}
   getInitialState: function() {
     return { count: 0 };
   },
@@ -20,5 +21,5 @@ var HomeScreen = React.createClass({
         </p>
       </div>
     )
-  }
+  },
 });
