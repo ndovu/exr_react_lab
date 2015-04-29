@@ -78,6 +78,10 @@ var HomeScreen = React.createClass({
     this.setState({sum: this.state.sum + 1});
   },
 
+  updateText: function() {
+    this.setState({text: this.refs.textInput.getDOMNode().value});
+  },
+
   render: function() {
     return (
       <div>
@@ -86,6 +90,9 @@ var HomeScreen = React.createClass({
           <p>More stuff!</p>
           <p>More stuff!</p>
         </Greeting>
+
+        <input type="text" ref="textInput" onChange={this.updateText} />
+        {this.state.text}
 
         <p className="content">
           This is some text coming from a React component!
