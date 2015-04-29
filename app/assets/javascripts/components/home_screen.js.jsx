@@ -107,7 +107,14 @@ var HomeScreen = React.createClass({
                   onChange={this.updateText} />
           <button>Submit</button>
         </form>
-        {this.state.text}
+        
+        <ul>
+          {
+            this.state.items.map(function(item) {
+              return <li>{item}</li>
+            })
+          }
+        </ul>
 
         <p className="content">
           This is some text coming from a React component!
