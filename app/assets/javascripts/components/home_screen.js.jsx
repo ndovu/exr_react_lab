@@ -56,6 +56,7 @@ var ClickCounter = React.createClass({
   },
 
   incrementClickCount: function() {
+    this.props.onIncrement();
     this.setState({count: this.state.count + 1});
   },
 
@@ -73,6 +74,10 @@ var HomeScreen = React.createClass({
     return { };
   },
 
+  increaseSum: function () {
+    this.setState({sum: this.state.sum + 1});
+  },
+
   render: function() {
     return (
       <div>
@@ -86,8 +91,14 @@ var HomeScreen = React.createClass({
           This is some text coming from a React component!
         </p>
 
-        <ClickCounter initialValue={1} title="Click counter one" />
-        <ClickCounter initialValue={2} title="Click counter two" />
+        <ClickCounter onIncrement={this.increaseSum}
+                      initialValue={0} 
+                      title="Click counter one" />
+
+        <ClickCounter onIncrement={this.increaseSum}
+                      initialValue={0} 
+                      title="Click counter two" />
+
         <ClickCounter />
       </div>
     );
